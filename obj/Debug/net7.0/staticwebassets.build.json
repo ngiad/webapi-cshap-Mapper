@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "m1+J4oAmeOKtGntdzKHQsZ01eEGJvqj+DNeEFOD92+I=",
+  "Source": "cshap-basic-vscode",
+  "BasePath": "_content/cshap-basic-vscode",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

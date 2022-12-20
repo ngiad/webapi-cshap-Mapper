@@ -1,0 +1,13 @@
+create new project webapi :  dotnet new webapi
+run app : dotnet watch run
+
+
+// Service =>  tạo 1 file Service = interFace
+
+
+// async => bất đồng bộ phải bọc task cho kiểu dữ liệu return
+vd : 
+        public async Task<List<Character>> GetAllCharecters()
+        {
+            return Characters;
+        }
