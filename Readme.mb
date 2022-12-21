@@ -11,3 +11,25 @@ vd :
         {
             return Characters;
         }
+
+AutoMapper : dotnet add package AutoMapper.Extensions.Microsoft.DependencyInjection --version 12.0.0
+
+
+Entity : dotnet add package Microsoft.EntityFrameworkCore --version 7.0.1
+=> dotnet add package Microsoft.EntityFrameworkCore.SQLServer
+=> dotnet add package Microsoft.EntityFrameworkCore.Design
+=> 
+
+
+
+
+// tool ef
+dotnet tool install --global dotnet-ef
+
+
+=>  tạo table trong database
+tạo migrations 
+ dotnet ef migrations add InitialCreate
+
+update database
+ dotnet ef database update

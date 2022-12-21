@@ -12,5 +12,6 @@ namespace cshap_basic_vscode.Services.CharecterService
         Task<ServiceResponse<List<GetCharacterDto>>> AddCharacter(AddCharacterDto newCharecter);
         Task<ServiceResponse<GetCharacterDto>>UpdateCharacter(UpdateChacterDto updateCharecter);
         Task<ServiceResponse<List<GetCharacterDto>>>DeleteCharacter(int id);
+        Task<ServiceResponse<List<GetCharacterDto>>> QueryCharacter(string name);
     }
 }

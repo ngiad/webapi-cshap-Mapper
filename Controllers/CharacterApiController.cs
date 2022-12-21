@@ -55,5 +55,16 @@ namespace cshap_basic_vscode.Controllers
             return Ok(res);
         }
 
+        [HttpGet("search")]
+
+        public async Task<ActionResult<ServiceResponse<List<GetCharacterDto>>>> QueryCharacter([FromQuery] string name){
+            ServiceResponse<List<GetCharacterDto>> res = await _charecterService.QueryCharacter(name);
+            if(res.data is null){
+                return NotFound(res);
+            }
+
+            return Ok(res);
+        }
+
     }
 }
