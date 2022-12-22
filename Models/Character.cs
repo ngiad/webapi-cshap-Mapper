@@ -14,5 +14,6 @@ namespace cshap_basic_vscode.Models
         public int Defense {get;set;} = 10;
         public int Interlligence {get;set;} = 10;
         public RpgClass Class {get;set;} = RpgClass.Knight;
+        public User? User {get;set;}
     }
 }

@@ -27,9 +27,11 @@ Entity : dotnet add package Microsoft.EntityFrameworkCore --version 7.0.1
 dotnet tool install --global dotnet-ef
 
 
+sau khi khoi tao dbcontext xog 
+
 =>  tạo table trong database
 tạo migrations 
- dotnet ef migrations add InitialCreate
+ dotnet ef migrations add "ten colum can them "
 
 update database
  dotnet ef database update

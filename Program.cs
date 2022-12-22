@@ -6,6 +6,7 @@ global using Microsoft.EntityFrameworkCore;
 global using cshap_basic_vscode.Data;
 
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -18,6 +19,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
 builder.Services.AddScoped<ICharecterService,CharecterService>();
+builder.Services.AddScoped<IAuthenReponsitory,AuthenReponsitory>();
 
 var app = builder.Build();
 

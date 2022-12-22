@@ -12,5 +12,6 @@ namespace cshap_basic_vscode.Data
         }
 
         public DbSet<Character> Characters  =>  Set<Character>();      // {get;set;}
+        public DbSet<User> Users  =>  Set<User>(); 
     }
 }
