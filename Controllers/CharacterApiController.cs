@@ -1,12 +1,16 @@
+using System.Net;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+
 
 
 namespace cshap_basic_vscode.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class CharacterApiController : ControllerBase
@@ -16,7 +20,8 @@ namespace cshap_basic_vscode.Controllers
         public CharacterApiController(ICharecterService charecterService){
             _charecterService = charecterService;
         }
-
+        
+        [AllowAnonymous] // không cần authen vẫn get đc
         [HttpGet]
         public async Task<ActionResult<ServiceResponse<List<GetCharacterDto>>>> Get()
         {

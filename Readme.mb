@@ -35,3 +35,73 @@ tạo migrations
 
 update database
  dotnet ef database update
+
+
+ *jwt 
+   "AppSetting" : {
+    "Token" : "My top secret key"
+  },
+
+  tạo trong appsetting
+
+
+using :
+
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+
+
+
+=>  authen middleware
+
+Program {
+    builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme);
+} 
+
+dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer --version 7.0.1
+
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options => {
+        options.TokenValidationParameters = new TokenValidationParameters{
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8
+                .GetBytes(builder.Configuration.GetSection("AppSetting:Token").Value!)),
+            ValidateIssuer = false,
+            ValidateAudience = false
+        };
+    });
+
+
+
+app.UseAuthentication();
+
+
+// các router cần authen 
+
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+
+
+[Authorize]
+
+khi dùng
+
+dotnet add package Swashbuckle.AspNetCore.Filters
+
+builder.Services.AddSwaggerGen(c => {
+    c.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme{
+        Description = """Standard Authorization header using the Bearer scheme. Example: "bearer {token}" """,
+        In = ParameterLocation.Header,
+        Name = "Authorization",
+        Type = SecuritySchemeType.ApiKey
+    });
+
+    c.OperationFilter<SecurityRequirementsOperationFilter>();
+});
+
+[AllowAnonymous] // không cần authen vẫn get đc
+[HttpGet]
